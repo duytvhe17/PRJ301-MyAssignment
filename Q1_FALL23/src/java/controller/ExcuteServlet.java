@@ -2,48 +2,77 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+package controller;
 
-package controller.authentication;
-
-import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 
 /**
  *
- * @author sonnt
+ * @author ADMIN
  */
-public class LogoutController extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+public class ExcuteServlet extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        request.getSession().setAttribute("account", null);
-        Cookie c_username = new Cookie("username", "");
-            c_username.setMaxAge(-1);
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ExcuteServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
             
-            Cookie c_password = new Cookie("password", "");
-            c_password.setMaxAge(-1);
+            int a = Integer.parseInt(request.getParameter("a"));
+            int b = Integer.parseInt(request.getParameter("b"));
             
-            response.addCookie(c_username);
-            response.addCookie(c_password);
-            
-            response.getWriter().println("logged out!");
-    } 
+            if(a<0 || b < 0){
+                out.println("<h4>a=" + a +",b="+b+"=> output:You must input a>0 and b>0</h4>");
+            }else{
+                out.println("<h4>a=" + a +",b="+b+"=> output:"+timbcnn(a, b)+"</h4>");
+
+            }
+          
+          
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+      public int timbcnn(int a, int b){
+    int start;
+    if(a>b){
+        start = a;
+        
+    }else{
+        start = b;
+        
+    }
+    while(start % a != 0 || start % b != 0){
+        start ++;
+    }
+    return start;
+}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -51,12 +80,13 @@ public class LogoutController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -64,12 +94,13 @@ public class LogoutController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

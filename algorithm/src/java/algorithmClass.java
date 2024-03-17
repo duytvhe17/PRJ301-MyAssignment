@@ -164,4 +164,38 @@ while (number != 0){
 }
 return original == reversed;
 }
+
+public static int fibonacci(int n){
+    if(n <= 1){
+        return n;
+    }
+    int fib = 1;
+    int prevFib = 1;
+    
+    for(int i = 2; i < n; ++i){
+        int temp = fib;
+        fib += prevFib;
+        prevFib = temp;
+    }
+    return fib;
+}
+
+public static boolean kiemtranamnhuan(int year){
+    return (year %4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+public int timbcnn(int a, int b){
+    int start;
+    if(a>b){
+        start = a;
+        
+    }else{
+        start = b;
+        
+    }
+    while(start % a != 0 || start % b != 0){
+        start ++;
+    }
+    return start;
+}
 }
