@@ -3,21 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package controller.authentication;
+package controller.student;
 
+import dal.StudentDBContext;
+import entity.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author sonnt
+ * @author ADMIN
  */
-public class LogoutController extends HttpServlet {
+public class DeleteController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -28,17 +29,13 @@ public class LogoutController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        request.getSession().setAttribute("account", null);
-        Cookie c_username = new Cookie("username", "");
-            c_username.setMaxAge(-1);
-            
-            Cookie c_password = new Cookie("password", "");
-            c_password.setMaxAge(-1);
-            
-            response.addCookie(c_username);
-            response.addCookie(c_password);
-            
-            response.getWriter().println("logged out!");
+        response.setContentType("text/html;charset=UTF-8");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Student s = new Student();
+        s.setId(id);
+        StudentDBContext db = new StudentDBContext();
+        db.delete(s);
+        response.sendRedirect("list");
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

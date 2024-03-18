@@ -22,7 +22,7 @@ import util.DateTimeHelper;
 
 /**
  *
- * @author ADMIN
+ * @author sonnt
  */
 public class TimeTableController extends BaseRBACController {
 

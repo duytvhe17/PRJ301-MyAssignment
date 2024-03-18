@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author ADMIN
+ * @author sonnt
  */
 public class LecturerAttendanceTakingController extends BaseRBACController {
 
