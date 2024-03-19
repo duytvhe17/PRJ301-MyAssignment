@@ -13,6 +13,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Timetable</title>
     <div class="logo-fpt"></div>
@@ -43,7 +44,7 @@
 
         
         th {
-    background-color: burlywood; /* Màu xanh tím nhạt */
+    background-color: burlywood; 
 }
 
         input[type="date"] {
@@ -51,10 +52,10 @@
         }
 
         input[type="submit"] {
-            background-color: #4CAF50; /* Green background */
-            color: white; /* White text color */
+            background-color: #4CAF50; 
+            color: white; 
             padding: 10px;
-            margin-left: 10px; /* Space between elements */
+            margin-left: 10px; 
             border-radius: 5px;
             border-bottom: 1px white;
             cursor: pointer;
@@ -107,9 +108,28 @@
                 justify-content: space-between
             }
             
-            .img_header{
-                
-            }
+            /* Tùy chỉnh bảng chọn */
+#mySelect {
+  padding: 8px 20px; 
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  background-color: #ccc; 
+}
+
+
+#mySelect option {
+  padding: 8px; 
+  font-size: 16px; 
+  background-color: #fff; 
+  color: #000; 
+}
+
+
+#mySelect option:hover {
+  background-color: #ddd;
+}
+
             }
         
     </style>
@@ -117,8 +137,8 @@
 <body>
     <div class="img_header">
         <img src="https://gcs.tripi.vn/public-tripi/tripi-feed/img/474111jlW/logo-truong-dai-hoc-fpt-university_043152077.png" alt="Logo_FPT" style="width:350px; height: 80px;">
-        <img src="https://fap.fptacademy.vn/images/app-store.svg" alt="app_store" style="width:150px; height: 50px;">
-        <img src="https://fap.fptacademy.vn/images/play-store.svg" alt="play_store" style="width:150px; height: 50px;">
+        <img src="https://fap.fptacademy.vn/images/app-store.svg" alt="app_store" style="width:100px; height: 40px;">
+        <img src="https://fap.fptacademy.vn/images/play-store.svg" alt="play_store" style="width:100px; height: 40px;">
     </div>
         <p class="title_lecturer"><h1 >Lecturer</h1> ${sessionScope.username}</p>
     <div class="note">
@@ -131,7 +151,14 @@
             <div><h5>Các phòng bắt đầu bằng DE thuộc tòa nhà Delta. VD: DE,..</h5></div>
             <div><h5>Little UK (LUK) thuộc tầng 5 tòa nhà Delta</h5></div><br/>
         </div>
-
+<div class="select">
+    <label for="mySelect">Lecturer:</label>
+<select  id="mySelect" >
+  <option value="option1">Ngô Tùng Sơn</option>
+  <option value="option2">Nguyễn Thị Thu Thủy</option>
+  <option value="option3">Nguyễn Văn Thiện</option>
+</select>
+</div>
     <form action="timetable" method="GET">
         <input type="hidden" name="id" value="${param.id}"/>
         From-To: <input type="date" value="${requestScope.from}" name="from" style="font-size: 15px"/> - <input value="${requestScope.to}" type="date" name="to"/> 
@@ -146,12 +173,15 @@
                 <th>${d}</th>
             </c:forEach>
         </tr>
+        
         <c:forEach items="${requestScope.slots}" var="slot">
             <tr>
                 <td>${slot.name}</td>
                 <c:forEach items="${requestScope.dates}" var="d">
                     <td>
+                        
                         <c:forEach items="${requestScope.lessions}" var="les">
+                            
                             <c:if test="${d eq les.date and les.slot.id eq slot.id}">
                                 ${les.group.name} - ${les.group.subject.name}
                                 <a href="att?id=${les.id}"> 

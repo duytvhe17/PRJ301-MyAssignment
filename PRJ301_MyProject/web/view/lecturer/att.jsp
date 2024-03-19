@@ -14,6 +14,7 @@
 
 <html lang="en">
     <head>
+        <script src="path_to_your_javascript_file/saveButtonScript.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Attendance Of Lecturer</title>
         <style>
