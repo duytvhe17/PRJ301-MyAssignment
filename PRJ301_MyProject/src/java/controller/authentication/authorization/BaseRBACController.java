@@ -29,6 +29,7 @@ public abstract class BaseRBACController extends BaseRequiredAuthenticationContr
         return db.getByUsernameAndUrl(account.getUsername(), url);
     }
     
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException
     {
         ArrayList<Role> roles = getRoles(account,req);
@@ -45,6 +46,7 @@ public abstract class BaseRBACController extends BaseRequiredAuthenticationContr
     protected abstract void doGet(HttpServletRequest req, HttpServletResponse resp, Account account, ArrayList<Role> roles)
             throws ServletException, IOException;
 
+    @Override
     protected  void doPost(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException{
         ArrayList<Role> roles = getRoles(account,req);
         if(roles.size()<1)
@@ -56,6 +58,7 @@ public abstract class BaseRBACController extends BaseRequiredAuthenticationContr
             doPost(req, resp, account, roles);
         }
     }
+    
     
     protected abstract void doPost(HttpServletRequest req, HttpServletResponse resp, Account account, ArrayList<Role> roles)
             throws ServletException, IOException;

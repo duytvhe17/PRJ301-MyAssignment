@@ -24,7 +24,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('https://dnuni.fpt.edu.vn/wp-content/uploads/2021/01/FPTU-CSVC1thumb.jpg'); 
+            background-image: url('https://daihoc.fpt.edu.vn/templates/fpt-university/images/header.jpg'); 
             background-size: cover; 
             background-position: center;
             background-repeat: no-repeat; 
@@ -56,7 +56,7 @@
         }
 
         .login-container input[type="submit"] {
-            background-color: #0C4DA2; 
+            background-color: #0C4DA2 ; 
             color: white;
             border: none;
             cursor: pointer;

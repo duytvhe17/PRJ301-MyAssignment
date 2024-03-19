@@ -36,6 +36,7 @@ public class InsertController extends BaseRequiredAuthenticationController {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response,Account account)
     throws ServletException, IOException {
         
@@ -52,6 +53,7 @@ public class InsertController extends BaseRequiredAuthenticationController {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response,Account account)
     throws ServletException, IOException {
         StudentDBContext db = new StudentDBContext();
