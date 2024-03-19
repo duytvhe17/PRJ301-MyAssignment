@@ -147,7 +147,7 @@
                         <td>${a.student.name}</td>
                         <!-- IMAGE -->   
                         <td>                            
-                            <img src="../images/${a.student.id}.jpg" width="140" height="160" alt="${a.student.id}"/>
+                            <img src="../img/${a.student.id}.jpg" width="140" height="180" alt="${a.student.id}"/>
                         </td>
                         <!-- STATUS -->
                         <td>

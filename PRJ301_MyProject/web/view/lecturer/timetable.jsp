@@ -76,10 +76,10 @@
        
         
          .user-info {
-                background-color: #4CAF50; /* Green background */
-                color: white; /* White text color */
+                background-color: #0C4DA2; 
+                color: red; 
                 padding: 10px;
-                margin-left: 10px; /* Space between elements */
+                margin-left: 10px; 
                 border-radius: 5px;
                 border-bottom: 1px white;
                 margin-left: 450px;
@@ -88,7 +88,7 @@
             }
             
             .diachi{
-                background-color: #4CAF50; /* Green background */
+                background-color: #0645AD; /* Green background */
                 color: white; /* White text color */
                 padding: 10px;
                 margin-left: 10px; /* Space between elements */
@@ -106,13 +106,21 @@
                 display: flex;
                 justify-content: space-between
             }
+            
+            .img_header{
+                
+            }
             }
         
     </style>
 </head>
 <body>
-    <div><img src="https://gcs.tripi.vn/public-tripi/tripi-feed/img/474111jlW/logo-truong-dai-hoc-fpt-university_043152077.png" alt="Logo_FPT" style="width:350px; height: 80px;">
-        <p class="title_lecturer"><h1 >Lecturer</h1> ${sessionScope.username}</p></div>
+    <div class="img_header">
+        <img src="https://gcs.tripi.vn/public-tripi/tripi-feed/img/474111jlW/logo-truong-dai-hoc-fpt-university_043152077.png" alt="Logo_FPT" style="width:350px; height: 80px;">
+        <img src="https://fap.fptacademy.vn/images/app-store.svg" alt="app_store" style="width:150px; height: 50px;">
+        <img src="https://fap.fptacademy.vn/images/play-store.svg" alt="play_store" style="width:150px; height: 50px;">
+    </div>
+        <p class="title_lecturer"><h1 >Lecturer</h1> ${sessionScope.username}</p>
     <div class="note">
         <div ><span style="font-weight: bold">Note:</span> These activities do not include extra-curriculum activities, such as club activities ...</div><br/>
         <div ><span style="font-weight: bold">Chú thích:</span> Các hoạt động trong bảng dưới không bao gồm hoạt động ngoại khóa, ví dụ như hoạt động câu lạc bộ ...</div><br/>
