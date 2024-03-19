@@ -46,7 +46,7 @@ public class LecturerAttendanceTakingController extends BaseRBACController {
         }
         LessionDBContext lesDB = new LessionDBContext();
         lesDB.takeAttendance(leid, atts);
-        resp.sendRedirect("att?id="+leid);
+        resp.sendRedirect("timetable?id="+leid);
     }
 
     @Override

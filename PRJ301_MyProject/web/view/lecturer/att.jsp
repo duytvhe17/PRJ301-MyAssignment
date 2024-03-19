@@ -1,4 +1,4 @@
-<%-- 
+ <%-- 
     Document   : att
     Created on : Mar 1, 2024, 11:15:47 AM
     Author     : sonnt
@@ -17,68 +17,87 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Attendance Of Lecturer</title>
         <style>
-            /* CSS for table styling */
+            
             table {
-                border-collapse: collapse; /* Remove default spacing between table cells */
-                width: 100%; /* Set table width to 100% of its container */
+                border-collapse: collapse; 
+                width: 100%; 
+                
 
             }
 
-            /* Styling for table header */
+           
             .table_header {
-                background-color: darkorange; /* Background color orange */
-                color: white; /* Text color white */
-                border: 1px solid black; /* Solid black border around cells */
-                padding: 8px; /* Add padding to th elements */
-                text-align: center; /* Center align text */
+                background-color: #0645AD; 
+                color: white; 
+                border: 3px solid black; 
+                padding: 10px; 
+                text-align: center;
+                
             }
 
-            /* Styling for table cells */
+            
             td {
-                border: 1px solid black; /* Solid black border around cells */
-                padding: 8px; /* Add padding to td elements */
-                text-align: center; /* Center align text */
+                border: 3px solid black; 
+                padding: 10px; 
+                text-align: center; 
             }
 
-            /* Styling for alternate rows */
+           
             tr:nth-child(even) {
-                background-color: #f2f2f2; /* Light gray background color for even rows */
+                background-color: #ddd; 
             }
 
             .container {
-                display: flex; /* Sử dụng flexbox để căn chỉnh */
-                justify-content: space-between; /* Căn đều các phần tử con */
-                align-items: center; /* Căn giữa theo chiều dọc */
-                padding: 10px; /* Thêm padding để tạo khoảng cách */
-                border: 1px solid #ccc; /* Đặt đường viền cho khung */
-                padding: 10px; /* Thêm padding để tạo khoảng cách giữa khung và nội dung */
-                margin-bottom: 50px; /* Thêm margin để tạo khoảng cách giữa các khung */
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Thêm đổ bóng */
+                display: flex; 
+                justify-content: space-between; 
+                align-items: center;
+                padding: 10px; 
+                border: 3px solid #ccc; 
+                padding: 10px; 
+                margin-bottom: 20px; 
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
             }
             .title {
-                flex-grow: 1; /* Tiêu đề sẽ mở rộng để chiếm hết không gian còn lại */
-                text-align: center; /* Căn giữa theo chiều ngang */
+                flex-grow: 1; 
+                text-align: center; 
             }
             .footer {
-                border: 1px solid #ccc; /* Đặt đường viền cho khung */
-                padding: 10px; /* Thêm padding để tạo khoảng cách giữa khung và nội dung */
-                margin-bottom: 20px; /* Thêm margin để tạo khoảng cách giữa các khung */
+                border: 1px solid #ccc; 
+                padding: 10px; 
+                margin-bottom: 20px; 
                 margin-top: 50px;
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Thêm đổ bóng */
-                
-                
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
+
+
+            }
+            
+            .user-info{
+                background-color: #0645AD; 
+                color: white; 
+                padding: 10px;
+                margin-left: 10px; 
+                border-radius: 5px;
+                margin-left: 100px;
+            }
+            
+            .submit_save{
+                margin-bottom: 20px;
+                background-color: #0645AD;
             }
         </style>
-     <script>
+        <script>
             function logout() {
                 window.location.href = "../logout";
             }
         </script>
     </head>
+
+
     <body>
         <div class="container">
-            <img src="../images/FPT_Education_logo.svg.png" alt="Logo_FPT" style="width:250px; height: 100px;">
-            <h1 class="title">Lecturer's attendance</h1>
+            <img src="https://gcs.tripi.vn/public-tripi/tripi-feed/img/474111jlW/logo-truong-dai-hoc-fpt-university_043152077.png" alt="Logo_FPT" style="width:420px; height: 100px;">
+            <h1 class="title">Lecturer's attendance</h1><br/>
+            <a href="timetable?id=${param.id}"><span class="user-info" style="font-size: 15px">Back</span></a>
             <div style="width: 250px; display: flex; ">
                 <c:forEach items="${requestScope.lessons}" var="less">
                     <c:if test="${param.id eq less.leID}">
@@ -93,19 +112,19 @@
             </div>
         </div>
 
-        <form action="attendence" method="POST">
+        <form action="att" method="POST">
             <input type="hidden" name="id" value="${param.id}"/>
             <table border="1px">
                 <tr class="table_header">
-                    <td>NO</td>
-                    <td>GROUP</td>
+                    <td>NO</td> 
                     <td>CODE</td>
                     <td>NAME</td>
                     <td>IMAGE</td>
                     <td>STATUS</td>
                     <td>COMMENT</td>
-                    <td>TAKER</td>
                     <td>RECORD TIME</td>
+                   
+
                 </tr>
                 <c:set var="count" value="1" scope="page"/><!-- Khởi tạo biến đếm -->
                 <c:forEach items="${requestScope.atts}" var="a">
@@ -156,10 +175,14 @@
                     <c:set var="count" value="${count + 1}" scope="page"/> <!-- Tăng biến đếm sau mỗi lần lặp -->
                 </c:forEach>
             </table>
-            <input style="width: 100%; color: white; background-color: darkorange; padding: 10px; font-size: 20px" type="submit" value="Save"/>              
+            <input class="submit_save" style="width: 100%; color: white; background-color: darkorange; padding: 10px; font-size: 20px" type="submit" value="Save"/>              
         </form>
-         <div class="footer">
-            <p style="text-align: center">Mọi góp ý, thắc mắc xin liên hệ: Phòng dịch vụ giáo viên: Email: <b>dichvugiaovien@fe.edu.vn</b>. Điện thoại: (024)7308.13.13</p>
+        <div style="font-size: 12px"><span style="font-weight: bold">Mọi góp ý, thắc mắc xin liên hệ:</span>
+            <span> Phòng dịch vụ sinh viên: Email:</span>
+            <a href=""><span>dichvusinhvien@fe.edu.vn.</span></a>
+            <span >Điện thoại:</span>
+            <span style="font-weight: bold">(024)7308.13.13</span>
+            <div class="last">© Powered by <span style="color: #0C4DA2">FPT University |  CMS |  library |  books24x7</span></div>
+        </div>
     </body>
 </html>
- 

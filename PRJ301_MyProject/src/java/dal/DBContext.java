@@ -20,13 +20,11 @@ public abstract class DBContext<T> {
     public DBContext() {
         try {
             String user = "duy";
-            String pass = "123";
+            String pass = "12345";
             String url = "jdbc:sqlserver://DESKTOP-TIBS6HT\\SQLEXPRESS:1433;databaseName=AssigmentPRJ301;encrypt=true;trustServerCertificate=true";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -17,6 +17,7 @@
     <title>Đại học FPT Login</title>
     <style>
         body {
+           
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -25,13 +26,19 @@
             align-items: center;
             height: 100vh;
             background-image: url('https://daihoc.fpt.edu.vn/templates/fpt-university/images/header.jpg'); 
+            width: 50%;
             background-size: cover; 
             background-position: center;
             background-repeat: no-repeat; 
         }
+        
+        .logo{
+             background-image: url('https://www.gddt.edu.vn/media/6/2024/01/logo-dai-hoc-fpt.png'); 
+            
+        }
 
         .login-container {
-    background-color: #F65B00;
+    background-color: rgba(255, 165, 0, 0.7);
     color: #000;
     padding: 20px;
     border-radius: 5px;
@@ -68,11 +75,16 @@
         .login-container input[type="checkbox"] {
             margin-right: 5px;
         }
+        
+       
     </style>
 </head>
 <body>
+    <div class="logo"></div>
     <div class="login-container">
-        <h2>Login</h2>
+        <img src="https://gcs.tripi.vn/public-tripi/tripi-feed/img/474111jlW/logo-truong-dai-hoc-fpt-university_043152077.png" alt="Logo_FPT" style="width:300px; height: 70px;">
+        <h2>Login</h2>  
+        
         <form action="login" method="POST">
             <label for="username">Username:</label><br/>
             <input type="text" id="username" name="username"/><br/><br/>

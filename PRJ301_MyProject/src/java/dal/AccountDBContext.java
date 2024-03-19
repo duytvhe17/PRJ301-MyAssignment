@@ -18,22 +18,25 @@ public class AccountDBContext extends DBContext<Account> {
 
     public Account getAccountByUsernamePassword(String username, String password) {
         try {
-            String sql = "SELECT username,[password],displayname FROM Account \n"
-                    + "WHERE username = ? AND password = ?";
-            
+            String sql = """
+                         SELECT [username]
+                               ,[password]
+                               ,[displayname]
+                           FROM [Account]
+                           WHERE username = ? AND password=?""";
+
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);
             stm.setString(2, password);
             ResultSet rs = stm.executeQuery();
-            if(rs.next())
-            {
+            if (rs.next()) {
                 Account account = new Account();
                 account.setUsername(username);
                 account.setPassword(password);
                 account.setDisplayname(rs.getString("displayname"));
                 return account;
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -63,6 +66,11 @@ public class AccountDBContext extends DBContext<Account> {
     @Override
     public Account get(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public static void main(String[] args) {
+        Account a = new AccountDBContext().getAccountByUsernamePassword("sonnt", "123");
+        System.out.println(a);
     }
 
 }
