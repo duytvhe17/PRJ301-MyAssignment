@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        ${1+1 lt 2?"HIIH":"HEHE"}
     </body>
 </html>
